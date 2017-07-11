@@ -1,0 +1,8 @@
+.splash_wrapper {
+  margin-top: 100px;
+}
+
+.signup_btn {
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,25 @@
+#map {
+  height: 40vh;
+  width: 50vw;
+}
+.map {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+.salonFinder{
+
+  background-size: cover;
+  width: 100%;
+  min-height: 60vh;
+  padding: 0;
+  margin: 0;
+}
+
+
+.salonInput {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <title>Hairbook</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="src/views/splash/splash.css">
+    <link rel="stylesheet" href="src/views/signup/signup.css">
+    <link rel="stylesheet" href="src/views/trend/trend.css">
+    <link rel="stylesheet" href="src/views/endorse/endorse.css">
+    <link rel="stylesheet" href="src/views/map/map.css">
+    <link rel="stylesheet" href="src/views/nav/navbar.css">
+    <link rel="stylesheet" href="src/views/summary/summary.css">
+    <link rel="stylesheet" href="src/views/sales/sales.css">
+  </head>
+  <body>
+
+
+    <ui-view></ui-view>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script>
+    <script src="./src/app.js"></script>
+    <script src="./src/views/nav/navbarDirective.js"></script>
+    <script src="./src/views/signup/signupCtrl.js"></script>
+    <script src="./src/views/signup/signupService.js"></script>
+    <script src="./src/views/trend/trendCtrl.js"></script>
+    <script src="./src/views/trend/trendService.js"></script>
+    <script src="./src/views/map/mapCtrl.js"></script>
+    <script src="./src/views/map/mapService.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAtgOq_TzC-WfK07vK-ZAhinzXV8dvPuJs"></script>
+
+  </body>
+</html>

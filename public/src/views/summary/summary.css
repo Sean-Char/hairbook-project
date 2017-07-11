@@ -1,0 +1,39 @@
+body {
+  background-color: #f4f4f4;
+}
+
+.summary_wrapper {
+  margin-top: 51px;
+}
+
+/*header*/
+#header {
+  background-color: #333333;
+  color: #ffffff;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+#header .create {
+  margin-top: 20px;
+}
+
+/*bread crumb*/
+.breadcrumb {
+  background: #cccccc;
+  color: #333333;
+}
+
+.breadcrumb a {
+  color: #333333;
+}
+
+/*progress bar*/
+.progress-bar {
+  background: #333333;
+  color: #ffffff;
+}
+
+.dash-box {
+  text-align: center;
+}
