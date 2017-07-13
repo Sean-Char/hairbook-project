@@ -6,7 +6,7 @@ angular.module('app', ['ui.router'])
       .otherwise('/');
 
     $stateProvider
-      .state('home', {
+      .state('splash', {
         url: '/',
         templateUrl: './src/views/splash/splash.html'
       })
@@ -27,6 +27,12 @@ angular.module('app', ['ui.router'])
       })
       .state('sales', {
         url: '/sales',
-        templateUrl: './src/views/sales/sales.html'
+        templateUrl: './src/views/sales/sales.html',
+        controller: 'salesCtrl'
+      })
+      .state('portfolio', {
+        url: '/portfolio',
+        templateUrl: './src/views/portfolio/portfolio.html',
+        controller: 'portfolioCtrl'
       })
   })

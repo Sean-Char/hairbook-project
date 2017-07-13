@@ -1,8 +1,8 @@
-body {
+/*body {
   background-color: #f4f4f4;
-}
+}*/
 
-.summary_wrapper {
+.main_container{
   margin-top: 51px;
 }
 
@@ -23,6 +23,12 @@ body {
   background: #cccccc;
   color: #333333;
 }
+
+/*.breadcrumb > li + li:before {
+    color: #ccc;
+    content: "/ ";
+    padding: 0 5px;
+}*/
 
 .breadcrumb a {
   color: #333333;

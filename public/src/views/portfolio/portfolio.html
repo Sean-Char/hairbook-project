@@ -28,7 +28,8 @@
     <div class="container">
       <ol class="breadcrumb">
         <li><a href="">Summary</a></li>
-        <li class="active"><a href="">Sales</a></li>
+        <li><a href="">Sales</a></li>
+        <li class="active"><a href="">Portfolio</a></li>
       </ol>
     </div>
   </section>
@@ -53,35 +54,35 @@
 
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h3 class="panel-title">Sales</h3>
+              <h3 class="panel-title">My Portfolio</h3>
             </div>
             <div class="panel-body">
 
               <div class="col-md-3">
                 <div class="well dash-box">
-                  <h3><span class="glyphicon glyphicon-usd" aria-hidden="true"></span> {{sales | currency}}</h3>
-                  <h5>Monthly</h5>
+                  <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span> </h3>
+                  <h5>Long Hair</h5>
                 </div>
               </div>
 
               <div class="col-md-3">
                 <div class="well dash-box">
-                  <h3><span class="glyphicon glyphicon-usd" aria-hidden="true"></span> 1200.00</h3>
-                  <h5>Weekly</h5>
+                  <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span> </h3>
+                  <h5>Med Hair</h5>
                 </div>
               </div>
 
               <div class="col-md-3">
                 <div class="well dash-box">
-                  <h3><span class="glyphicon glyphicon-usd" aria-hidden="true"></span> 160.00</h3>
-                  <h5>Today</h5>
+                  <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span> </h3>
+                  <h5>Short Hair</h5>
                 </div>
               </div>
 
               <div class="col-md-3">
                 <div class="well dash-box">
-                  <h3><span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span> 100.00</h3>
-                  <h5>Tips</h5>
+                  <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span> </h3>
+                  <h5>Mens</h5>
                 </div>
               </div>
 
@@ -90,53 +91,40 @@
 
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h3 class="panel-title">Sale Submission</h3>
+              <h3 class="panel-title">Profile Submission</h3>
             </div>
             <div class="panel-body">
 
             <!-- form -->
-              <form class="" ng-submit="submitSales(sale)">
+              <form class="" ng-submit="submitPortfolio(profile)">
                 <div class="container">
                   <div class="row">
-
                     <div class="col-md-4">
-                    <!-- form -->
-                      <div class="form-group">
-                        <label><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Client Name</label>
-                        <input type="text" class="form-control" ng-model="sale.fname">
-                      </div>
 
                       <div class="form-group">
-                        <label><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Client Last Name</label>
-                        <input type="text" class="form-control" ng-model="sale.lname">
+                        <label><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Description</label>
+                        <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="profile.description"></textarea>
                       </div>
 
-                      <div class="form-group">
-                        <label><span class="glyphicon glyphicon-usd" aria-hidden="true"></span> Sale</label>
-                        <input type="text" class="form-control" ng-model="sale.sale">
-                      </div>
 
                       <div class="form-group">
-                        <label><span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span> Tips</label>
-                        <input type="text" class="form-control" ng-model="sale.tips">
+                        <label><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Notes | Alergies</label>
+                        <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="profile.notes"></textarea>
                       </div>
 
                     </div>
                     <!-- right column -->
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label><span class="glyphicon glyphicon-tint" aria-hidden="true"></span> Service</label>
-                        <input type="text" class="form-control" ng-model="sale.service">
+                        <label><span class="glyphicon glyphicon-tint" aria-hidden="true"></span> Product Used</label>
+                        <input type="text" class="form-control" ng-model="profile.product">
                       </div>
 
                       <div class="form-group">
-                        <label><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Product Sold</label>
-                        <input type="text" class="form-control" ng-model="sale.product">
-                      </div>
-
-                      <div class="form-group">
-                        <label><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Notes</label>
-                        <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="sale.note"></textarea>
+                        <label><span class="glyphicon glyphicon-floppy-open" aria-hidden="true"></span> Upload Image</label>
+                        <input type="file" id="file-input">
+                        <img ng-src="{{imageUrl}}"/>
+                        <p class="help-block">Only png and jpg allowed</p>
                       </div>
 
                     </div>
@@ -157,4 +145,7 @@
       </div>
     </div>
   </section> <!--end of main-->
+
+
+
 </div>

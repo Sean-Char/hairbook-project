@@ -4,7 +4,7 @@ angular.module('app').controller('signupCtrl', function($scope,$state,signupServ
     signupService.submitStylist(stylist).then(response => {
       console.log(response)
       if (response.status === 200){
-        $state.go('home')
+        $state.go('splash')
       }
     })
   }

@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Sean-Char/hairbook-project#readme",
   "dependencies": {
+    "aws-sdk": "^2.83.0",
     "body-parser": "^1.17.2",
     "cors": "^2.8.3",
     "express": "^4.15.3",
