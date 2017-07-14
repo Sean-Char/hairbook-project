@@ -1,13 +1,27 @@
-<div class="container salonFinder">
-  <form ng-submit="getGeoCode(address)">
-    <div class="salonInput">
-      <input type="text" placeholder="city" ng-model="address">
-    </div>
-  </form>
+<navbar-before></navbar-before>
 
-  <div class="map">
-    <div id="map"></div>
+<div class="main-container salonFinder">
+
+  <div class="row">
+    <div class="col-sm-6 center-block">
+
+      <form ng-submit="getGeoCode(address)">
+        <div class="salonInput">
+          <div class="input-group">
+            <span class="input-group-addon" id="sizing-addon2"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+            <input type="text" class="form-control" placeholder="Enter a Zip or City" aria-describedby="sizing-addon2">
+          </div>
+        </div>
+      </form>
+
+
+      <div class="map">
+        <div id="map"></div>
+      </div>
+
+    </div>
   </div>
+
 </div>
 
 

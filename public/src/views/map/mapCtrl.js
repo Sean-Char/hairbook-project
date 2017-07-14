@@ -23,6 +23,7 @@ angular.module('app').controller('mapCtrl', function($scope, mapService, $timeou
     })
   }
 
+  
 
 
 })

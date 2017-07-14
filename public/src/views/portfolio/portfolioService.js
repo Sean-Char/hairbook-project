@@ -12,4 +12,12 @@ angular.module('app').service('portfolioService', function($http){
    }
 
 
+   this.getImages = function(){
+     return $http.get('/api/images')
+     .then(function(response){
+       console.log(response);
+       return response.data
+     })
+   }
+
 })

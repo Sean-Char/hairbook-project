@@ -1,28 +1,54 @@
 <navbar-before></navbar-before>
 
 <div class="signup_wrapper">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <h4>Please Sign Up</h4>
-        <form class="" ng-submit="signupStylist(stylist)">
-          <div class="form-group">
-            <label for="">Name</label>
-            <input type="text" placeholder="Enter your name" class="form-control" ng-model="stylist.name">
-          </div>
-          <div class="form-group">
-            <label for="">Last Name</label>
-            <input type="text" placeholder="Enter your last name" class="form-control" ng-model="stylist.lastname">
-          </div>
-          <div class="form-group">
-            <label for="">Email</label>
-            <input type="text" placeholder="Enter your email" class="form-control" ng-model="stylist.email">
+
+  <div class="row">
+    <div class="col-md-6 center-block">
+
+      <div class="panel panel-primary ">
+        <div class="panel-heading">
+          <h3 class="panel-title"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Sign Up</h3>
+        </div>
+        <div class="panel-body">
+
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-6">
+
+                <form class="" ng-submit="signupStylist(stylist)">
+                  <div class="form-group">
+                    <label for="">Name</label>
+                    <input type="text" placeholder="Enter your name" class="form-control" ng-model="stylist.name">
+                  </div>
+                  <div class="form-group">
+                    <label for="">Last Name</label>
+                    <input type="text" placeholder="Enter your last name" class="form-control" ng-model="stylist.lastname">
+                  </div>
+                  <div class="form-group">
+                    <label for="">Email</label>
+                    <input type="text" placeholder="Enter your email" class="form-control" ng-model="stylist.email">
+                  </div>
+
+                  <button type="submit">Submit</button>
+
+                </form>
+              </div>
+            </div>
           </div>
 
-          <button type="submit">Submit</button>
 
-        </form>
+        </div>
       </div>
+
+
     </div>
   </div>
+
+
+
+
+
+
+
+
 </div>

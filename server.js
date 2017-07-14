@@ -51,14 +51,16 @@ passport.use(new Strategy( config.Strategy ,
       .run("select * from stylist_table where fb_id = $1", [profile.id])
       .then(function(user) {
         if (!user.length) {
-          app.get('db').run('insert into stylist_table (name, lastname, fb_id) values ($1, $2, $3)',
+          app.get('db').run('insert into stylist_table (name, lastname, fb_id) values ($1, $2, $3) returning *',
           [profile.displayName.split(" ")[0], profile.displayName.split(" ")[1], profile.id])
+          .then(function(user) {
+            return cb(null, user[0])
+          })
         }
         else {
+          return cb(null, user[0])
         }
       })
-
-    return cb(null, profile);
   }));
 
 app.get("/auth/facebook", passport.authenticate("facebook"));
@@ -80,9 +82,9 @@ passport.deserializeUser(function(obj, cb) {
 
 // endpoints
 app.get('/api/sales', serverCtrl.getSalesSum)
-
+app.get('/api/images', serverCtrl.getImages)
 app.post('/api/stylists', serverCtrl.createStylist)
-app.post('/api/sales', serverCtrl.createSale)
+app.post('/api/sales', function(req, res, next) {console.log("At submit sale", req.body); next()}, serverCtrl.createSale)
 app.post('/api/portfolios', serverCtrl.createPortfolio)
 
 

@@ -19,24 +19,16 @@ module.exports = {
 
   createSale: function(req, res, next){
     const db = req.app.get('db')
-    // console.log(req.session);
-    const {fname, lname, service, product, sale, tips, date, note} = req.body;
-    db.run('select id from stylist_table where fb_id = $1', [req.session.passport.user.id])
-    .then(function(idResponse){
-        id = idResponse.pop().id;
-        db.createSale([fname, lname, service, product, Number(sale), Number(tips), date, note, Number(id)])
-        .then( results => {
-          return res.status(200).json(results)
-        })
-          .catch( err => {
-            console.log(err);
-            return res.status(500).json(err)
-          })
-
-    }).catch(function(err){
-      console.log(err);
-      return res.status(500).json(err);
+    console.log(req.session);
+    const {fname, lname, service, product, sale, tips, note} = req.body;
+    db.createSale([fname, lname, service, product, Number(sale), Number(tips), note, req.user.id])
+    .then( results => {
+      return res.status(200).json(results)
     })
+      .catch( err => {
+        console.log(err);
+        return res.status(500).json(err)
+      })
   },
 
   createPortfolio: function(req, res, next){
@@ -52,13 +44,60 @@ module.exports = {
   },
 
   getSalesSum:function(req, res, next){
+    if (!req.user || !req.user.id) {
+      return res.status(401).json("Unauthorized")
+    }
     const db = req.app.get('db')
-    db.getSalesSum().then(function(results){
-      return res.status(200).json(results[0].sum)
+    const sales = {}
+    return Promise.all([
+      db.getMonthlySales(req.user.id)
+        .then(function(results){
+          console.log(results)
+          sales.monthly = results[0].monthly
+        }),
+      db.getWeeklySales(req.user.id)
+        .then(function(results){
+          console.log(results)
+          sales.weekly = results[0].weekly
+        }),
+      db.getDailySales(req.user.id)
+        .then(function(results){
+          console.log(results)
+          sales.daily = results[0].daily
+        }),
+      db.getTipSum(req.user.id)
+        .then(function(results){
+          console.log(results)
+          sales.tips = results[0].tips
+        }),
+      db.getSaleCount(req.user.id)
+        .then(function(results){
+          console.log(results)
+          sales.count = results[0].count
+        })
+    ])
+    .then(results => {
+      console.log(sales)
+      return res.status(200).json(sales)
     })
-    .catch(function(err){
+    .catch(function(err) {
+      console.log(err)
       return res.status(500).json(err)
     })
+  },
+
+  getImages: function(req, res, next){
+    const db = req.app.get('db')
+    db.getImages()
+      .then(function(results){
+        console.log(results)
+        res.status(200).json(results)
+      })
+      .catch(function(err){
+        res.status(500).json(err)
+      })
+
   }
+
 
 }

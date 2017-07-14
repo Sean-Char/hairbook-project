@@ -40,7 +40,7 @@
             <a href="" class="list-group-item active">
               <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>  Dashboard
             </a>
-            <a href="" class="list-group-item"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span> Sales <span class="badge">12</span></a>
+            <a href="" class="list-group-item"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span> Sales <span class="badge">{{sales.count}}</span></a>
             <a href="" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Clientele <span class="badge">67</span></a>
             <a href="" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> New Clientele <span class="badge">29</span></a>
           </div>
@@ -75,14 +75,14 @@
 
               <div class="col-md-3">
                 <div class="well dash-box">
-                  <h3><span class="glyphicon glyphicon-usd" aria-hidden="true"></span> 2000.00</h3>
+                  <h3>{{sales.monthly | currency}}</h3>
                   <h5>Sales</h5>
                 </div>
               </div>
 
               <div class="col-md-3">
                 <div class="well dash-box">
-                  <h3><span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span> 100.00</h3>
+                  <h3>{{sales.tips | currency}}</h3>
                   <h5>Tips</h5>
                 </div>
               </div>

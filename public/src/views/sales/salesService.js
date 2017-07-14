@@ -12,5 +12,4 @@ angular.module('app').service('salesService', function($http){
     })
   }
 
-
 })

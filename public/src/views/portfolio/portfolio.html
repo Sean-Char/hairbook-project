@@ -50,39 +50,17 @@
           </div>
 
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9" ><!--ng-repeat-->
 
-          <div class="panel panel-default">
+          <div class="panel panel-default" >
             <div class="panel-heading">
               <h3 class="panel-title">My Portfolio</h3>
             </div>
             <div class="panel-body">
 
-              <div class="col-md-3">
-                <div class="well dash-box">
-                  <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span> </h3>
-                  <h5>Long Hair</h5>
-                </div>
-              </div>
-
-              <div class="col-md-3">
-                <div class="well dash-box">
-                  <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span> </h3>
-                  <h5>Med Hair</h5>
-                </div>
-              </div>
-
-              <div class="col-md-3">
-                <div class="well dash-box">
-                  <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span> </h3>
-                  <h5>Short Hair</h5>
-                </div>
-              </div>
-
-              <div class="col-md-3">
-                <div class="well dash-box">
-                  <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span> </h3>
-                  <h5>Mens</h5>
+              <div class="col-md-3" ng-repeat="image in images | orderBy: '-id' | limitTo: 4">
+                <div class="thumbnail">
+                  <img ng-src="{{image.image}}" alt="">
                 </div>
               </div>
 
@@ -123,8 +101,15 @@
                       <div class="form-group">
                         <label><span class="glyphicon glyphicon-floppy-open" aria-hidden="true"></span> Upload Image</label>
                         <input type="file" id="file-input">
-                        <img ng-src="{{imageUrl}}"/>
-                        <p class="help-block">Only png and jpg allowed</p>
+
+                          <p class="help-block">Only png and jpg allowed</p>
+
+                        <div class="col-md-6 col-md-3">
+                          <div class="thumbnail">
+                            <img ng-src="{{imageUrl}}"/>
+                          </div>
+                        </div>
+
                       </div>
 
                     </div>
@@ -132,7 +117,7 @@
                 </div>
 
                     <div class="container">
-                      <button class="btn btn-default" type="submit">Submit</button>
+                      <button class="btn btn-info" type="submit">Submit</button>
                     </div>
 
               </form>

@@ -23,7 +23,9 @@ angular.module('app', ['ui.router'])
       })
       .state('summary', {
         url: '/summary',
-        templateUrl: './src/views/summary/summary.html'
+        templateUrl: './src/views/summary/summary.html',
+        controller: 'summaryCtrl'
+
       })
       .state('sales', {
         url: '/sales',
@@ -35,4 +37,16 @@ angular.module('app', ['ui.router'])
         templateUrl: './src/views/portfolio/portfolio.html',
         controller: 'portfolioCtrl'
       })
+      .state('login', {
+        url: '/login',
+        templateUrl: './src/views/login/login.html'
+      })
+      .state('map', {
+        url: '/map',
+        templateUrl: './src/views/map/map.html',
+        controller: 'mapCtrl'
+      })
+
+
+
   })

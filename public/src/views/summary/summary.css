@@ -43,3 +43,8 @@
 .dash-box {
   text-align: center;
 }
+
+.thumbnail{
+  height: 171px;
+  width: 180px
+}
