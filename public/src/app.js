@@ -10,12 +10,6 @@ angular.module('app', ['ui.router'])
         url: '/',
         templateUrl: './src/views/splash/splash.html'
       })
-      .state('trend', {
-        templateUrl: './src/views/trend/trend.html'
-      })
-      .state('endorse', {
-        templateUrl: './views/endorse.html'
-      })
       .state('signup', {
         url: '/signup',
         templateUrl: './src/views/signup/signup.html',

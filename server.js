@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
       , cors = require('cors')
       , session = require('express-session')
@@ -7,13 +8,11 @@ const express = require('express')
       , Strategy = require('passport-facebook').Strategy
       , aws = require('aws-sdk')
 
-const config = require('./config')
-
 aws.config.update({
-   accessKeyId: config.accessKeyId,
-   secretAccessKey: config.secretAccessKey,
-   region: config.region,
-   signatureVersion: config.signatureVersion
+   accessKeyId: process.env.ACCESS_KEY_ID,
+   secretAccessKey: process.env.SECRET_ACCESS_KEY,
+   region: process.env.REGION,
+   signatureVersion: process.env.SIGNATURE_VERSION
 })
 
 
@@ -22,7 +21,7 @@ const serverCtrl = require('./server/serverCtrl')
 
 
 // verify conncection to the server
-massive(config.connectionString)
+massive(process.env.DATABASE_URL)
 .then(function(db){
   app.set('db', db)
   // db.createStylist(["name", "lastname", "email", "password"]).then(results => {
@@ -36,7 +35,7 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use('/', express.static(__dirname + '/public'));
 app.use(session({
-   secret: config.secret,
+   secret: process.env.SECRET,
    saveUninitialized: true,
    resave: false
 }))
@@ -45,7 +44,11 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session())
 
-passport.use(new Strategy( config.Strategy ,
+passport.use(new Strategy( {
+  clientID: process.env.CLIENT_ID,
+  clientSecret: process.env.CLIENT_SECRET,
+  callbackURL: process.env.CALLBACK_URL
+} ,
 	function(accessToken, refreshToken, profile, cb) {
     app.get('db')
       .run("select * from stylist_table where fb_id = $1", [profile.id])
@@ -92,7 +95,7 @@ app.post('/api/portfolios', serverCtrl.createPortfolio)
 app.get('/api/s3', function(req, res, next) {
    const s3 = new aws.S3()
    const s3Config = {
-      Bucket: config.bucketName,
+      Bucket: process.env.BUCKET_NAME,
       Key: req.query.file_name,
       Expires: 60,
       ContentType: req.query.file_type,
@@ -104,7 +107,7 @@ app.get('/api/s3', function(req, res, next) {
       }
       const data = {
          signed_request: response,
-         url: `https://${config.bucketName}.s3.amazonaws.com/${req.query.file_name}`
+         url: `https://${process.env.BUCKET_NAME}.s3.amazonaws.com/${req.query.file_name}`
       }
       return res.status(200).json(data)
    })
@@ -113,6 +116,6 @@ app.get('/api/s3', function(req, res, next) {
 
 
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log('Hairbook Server Listening on port 3000')
 })

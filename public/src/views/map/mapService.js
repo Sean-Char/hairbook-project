@@ -19,6 +19,7 @@ angular.module('app').service('mapService', function($http){
         .then(function(response){
           var salons = response.data.results
           self.map.panTo(location)
+
           var markers = []
           var windows = []
         for (var salon of salons) {
@@ -26,12 +27,15 @@ angular.module('app').service('mapService', function($http){
             position: salon.geometry.location,
             title: salon.name,
             map: self.map
-          })
+          });
+
           var infoWindow = new google.maps.InfoWindow({
              content: salon.name + "</br>" + salon.rating + " Rating"
           });
+
           markers.push(marker)
           windows.push(infoWindow)
+
           marker.addListener('mouseover', function(e){
             console.log("Marker clicked", this)
             for (var i = 0; i < markers.length; i++) {
@@ -40,7 +44,8 @@ angular.module('app').service('mapService', function($http){
                 windows[i].open(map, this)
               }
             }
-          })
+          });
+
           marker.addListener('mouseout', function() {
             for (var i = 0; i < markers.length; i++) {
               if (markers[i].title === this.title) {
@@ -48,15 +53,12 @@ angular.module('app').service('mapService', function($http){
                 windows[i].close()
               }
             }
+          });
 
-
-          })
-
-        }
+        }// end of for loop
 
         return response
-
-      })
+      });
     }
 
 
@@ -65,6 +67,7 @@ angular.module('app').service('mapService', function($http){
         zoom: 15,
         center: self.mapDefault
       });
+
       var marker = new google.maps.Marker({
         position: self.mapDefault,
         map: map
@@ -75,4 +78,4 @@ angular.module('app').service('mapService', function($http){
 
 
 
-})
+});
