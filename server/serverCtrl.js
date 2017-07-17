@@ -1,4 +1,4 @@
-
+const axios = require('axios')
 module.exports = {
 
   createStylist: function(req, res, next){
@@ -96,7 +96,19 @@ module.exports = {
       .catch(function(err){
         res.status(500).json(err)
       })
+  },
 
+  getSalons: function(req, res, next){
+    console.log(req.query)
+    axios.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json?radius=5000&type=beauty_salon&key=AIzaSyAtgOq_TzC-WfK07vK-ZAhinzXV8dvPuJs&location=' + req.query.lat + ',' + req.query.lng)
+    .then(function(response){
+      console.log(response);
+      res.status(200).json(response.data)
+    })
+    .catch(function(err){
+      console.log(err);
+      res.status(500).json(err)
+    })
   }
 
 
