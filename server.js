@@ -84,6 +84,7 @@ passport.deserializeUser(function(obj, cb) {
 
 
 // endpoints
+app.get('/api/salons', serverCtrl.getSalons)
 app.get('/api/sales', serverCtrl.getSalesSum)
 app.get('/api/images', serverCtrl.getImages)
 app.post('/api/stylists', serverCtrl.createStylist)

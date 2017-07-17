@@ -15,7 +15,8 @@ angular.module('app').service('mapService', function($http){
 
     var self = this;
     this.getSalons = function(location){
-      return $http.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json?radius=5000&type=beauty_salon&key=AIzaSyAtgOq_TzC-WfK07vK-ZAhinzXV8dvPuJs&location=' + location.lat + ',' + location.lng)
+      // return $http.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json?radius=5000&type=beauty_salon&key=AIzaSyAtgOq_TzC-WfK07vK-ZAhinzXV8dvPuJs&location=' + location.lat + ',' + location.lng)
+      return $http.get('/api/salons?lat=' + location.lat + '&lng=' + location.lng)
         .then(function(response){
           var salons = response.data.results
           self.map.panTo(location)
